@@ -1,0 +1,58 @@
+:root{
+      --card-radius: 1rem;
+      --soft-shadow: 0 6px 20px rgba(24,24,24,0.08);
+    }
+
+    body{
+      background: linear-gradient(180deg,#f7f9fc 0%, #ffffff 100%);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    .test-card{
+      width:100%;
+      max-width:960px;
+      border-radius:var(--card-radius);
+      box-shadow:var(--soft-shadow);
+      overflow:hidden;
+    }
+
+    .prompt-area{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      padding:1.25rem;
+      border-bottom:1px solid rgba(0,0,0,0.03);
+      height:180px;
+      overflow:auto;
+      font-size:1.05rem;
+      line-height:1.6;
+    }
+
+    .controls{ padding:1rem; }
+
+    .stats .stat { min-width:120px; }
+
+    /* The typing input is intentionally styled as plain to make JS focus handling simple */
+    .typing-input{
+      width:100%;
+      resize:none;
+      height:140px;
+      padding:1rem;
+      border-radius:0.5rem;
+      border:1px solid rgba(0,0,0,0.08);
+      box-shadow:none;
+      font-size:1.05rem;
+      line-height:1.5;
+      outline:none;
+    }
+
+    .help-text{ font-size:.9rem; color:#6b7280; }
+
+    /* small responsive tweaks */
+    @media (max-width:576px){
+      .prompt-area{ height:140px }
+      .typing-input{ height:110px }
+    }
