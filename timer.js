@@ -45,7 +45,7 @@ export function resetTimer() {
   timeDisplay.textContent = duration + "s"; //return to the starting count
 }
 
-function stopTimer() {
+export function stopTimer() {
   clearInterval(timerId);
   timerId = null;
 }
