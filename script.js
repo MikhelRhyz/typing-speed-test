@@ -1,4 +1,4 @@
-import { startTimer } from "./timer.js";
+import { startTimer, resetTimer} from "./timer.js";
 
 //store words and its total
 const promptElement = document.getElementById("prompt");
@@ -9,11 +9,13 @@ const words = promptElement.textContent
 const totalWords = words.length;
 const typingInput = document.querySelector("#typingInput");
 typingInput.disabled = true;
-
 const startBtn = document.querySelector("#startBtn");
+const resetBtn = document.querySelector("#resetBtn");
 
 startBtn.addEventListener("click", () => {
   startTimer();
 });
 
-
+resetBtn.addEventListener("click", () => {
+  resetTimer();
+})

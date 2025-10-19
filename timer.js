@@ -23,3 +23,15 @@ export function startTimer() {
     duration--; //decrease by 1
   }, 1000);
 }
+
+export function resetTimer() {
+  const time = document.querySelector("#time");
+  const duration = document.querySelector("#duration").value;
+  clearInterval(timerId);
+  timerId = null;
+
+  //reset display and input
+  time.textContent = duration + "s"; //return to the starting count
+  typingInput.disabled = true;
+  typingInput.value = "";
+}
