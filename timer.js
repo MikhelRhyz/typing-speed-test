@@ -1,4 +1,5 @@
 import { countWpm } from "./count_wpm.js";
+import { checkAccuracy } from "./accuracy.js";
 
 let timerId = null;
 const typingInput = document.querySelector("#typingInput");
@@ -20,6 +21,7 @@ export function startTimer() {
       timeDisplay.textContent = "0s"; //ensure stops at zero
       typingInput.disabled = true;
       countWpm(duration);
+      checkAccuracy();
       alert("time's up!");
       return;
     }
