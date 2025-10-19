@@ -1,3 +1,5 @@
+import { countWpm } from "./count_wpm.js";
+
 let timerId = null;
 const typingInput = document.querySelector("#typingInput");
 
@@ -5,33 +7,43 @@ export function startTimer() {
   if (timerId) return; // do nothing if timer is already running
   typingInput.disabled = false;
 
+  const timeDisplay = document.querySelector("#time");
   let duration = Number(document.querySelector("#duration").value);
-  const time = document.querySelector("#time");
+  let remaining = duration;
+
+  timeDisplay.textContent = remaining + "s";
 
   timerId = setInterval(() => {
-    time.textContent = duration + "s"; // show current time
 
-    if (duration <= 0) {
-      clearInterval(timerId);
-      timerId = null;
-      time.textContent = "0s"; //ensure stops at zero
-      alert("time's up!");
+    if (remaining <= 0) {
+      stopTimer();
+      timeDisplay.textContent = "0s"; //ensure stops at zero
       typingInput.disabled = true;
+      countWpm(duration);
+      alert("time's up!");
       return;
     }
 
-    duration--; //decrease by 1
+    remaining--; //decrease by 1
+    timeDisplay.textContent = remaining + "s"; // show current time
+
   }, 1000);
+
+
 }
 
 export function resetTimer() {
-  const time = document.querySelector("#time");
+  const timeDisplay = document.querySelector("#time");
   const duration = document.querySelector("#duration").value;
-  clearInterval(timerId);
-  timerId = null;
+  stopTimer();
 
   //reset display and input
-  time.textContent = duration + "s"; //return to the starting count
-  typingInput.disabled = true;
   typingInput.value = "";
+  typingInput.disabled = true;
+  timeDisplay.textContent = duration + "s"; //return to the starting count
+}
+
+function stopTimer() {
+  clearInterval(timerId);
+  timerId = null;
 }
