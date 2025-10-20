@@ -20,7 +20,7 @@ export function startTimer() {
   timerId = setInterval(() => {
 
     if (remaining <= 0) {
-      stopTimer();
+      stopTimer(isGameOn);
       timeDisplay.textContent = "0s"; //ensure stops at zero
       typingInput.disabled = true;
       countWpm(duration);
@@ -51,8 +51,9 @@ export function reset() {
 
 }
 
-export function stopTimer() {
+export function stopTimer(isGameOn) {
   clearInterval(timerId);
   timerId = null;
   difficulty.disabled = false;
+  isGameOn = false;
 }

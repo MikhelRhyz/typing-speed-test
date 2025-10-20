@@ -1,7 +1,8 @@
-import { startTimer, reset, stopTimer } from "./timer.js";
+import { reset, stopTimer, startTimer } from "./timer.js";
 import { countWpm } from "./count_wpm.js";
 import { checkAccuracy } from "./accuracy.js";
 import { checkDifficulty } from "./difficulty.js";
+import { startGame } from "./startGame.js";
 
 const typingInput = document.querySelector("#typingInput");
 typingInput.disabled = true;
@@ -9,6 +10,7 @@ const startBtn = document.querySelector("#startBtn");
 const resetBtn = document.querySelector("#resetBtn");
 let startingTime = 0;
 const difficultyLevel = document.querySelector("#difficulty");
+let isGameOn = false;
 
 difficultyLevel.addEventListener("change", () => {
   checkDifficulty();
@@ -18,13 +20,14 @@ checkDifficulty();
 
 startBtn.addEventListener("click", () => {
   reset();
-  difficultyLevel.disabled = true;
   startingTime = Number(document.querySelector("#duration").value);
+  isGameOn = true;
+  difficultyLevel.disabled = true;
   startTimer();
 });
 
 resetBtn.addEventListener("click", () => {
-  reset();
+  reset(isGameOn);
 });
 
 typingInput.addEventListener("input", () => {
@@ -52,4 +55,12 @@ typingInput.addEventListener("input", () => {
   }
 });
 
+// move focus to the typing area by pressing "tab" when the game started
+document.addEventListener("keydown", (event) => {
+  const key = event.key.toLowerCase();
 
+  if (key === "tab" && isGameOn) {
+    event.preventDefault();
+    typingInput.focus();
+  }
+});
