@@ -5,6 +5,7 @@ let timerId = null;
 const typingInput = document.querySelector("#typingInput");
 const wpm = document.querySelector("#wpm");
 const accuracy = document.querySelector("#accuracy");
+const difficulty = document.querySelector("#difficulty");
 
 export function startTimer() {
   if (timerId) return; // do nothing if timer is already running
@@ -53,4 +54,5 @@ export function reset() {
 export function stopTimer() {
   clearInterval(timerId);
   timerId = null;
+  difficulty.disabled = false;
 }

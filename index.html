@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-
+      <h2 id="title" class="text-center"></h2>
       <!-- Prompt (read-only) -->
       <div class="prompt-area mb-3" id="prompt" data-hook="prompt" tabindex="0">
         <!-- Put the sample text here. Your JS can replace or randomize this. -->
@@ -65,10 +65,9 @@
                 <div class="mb-3">
                   <label class="form-label">Difficulty / source</label>
                   <select class="form-select" id="difficulty" data-hook="difficulty">
-                    <option value="random">Random words</option>
-                    <option value="quotes">Short quotes</option>
-                    <option value="paragraphs" selected>Paragraphs</option>
-                    <option value="custom">Custom (JS will provide)</option>
+                    <option value="easy" selected>easy</option>
+                    <option value="medium">medium</option>
+                    <option value="hard" >hard</option>
                   </select>
                 </div>
 
