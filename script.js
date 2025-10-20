@@ -1,4 +1,4 @@
-import { startTimer, resetTimer, stopTimer} from "./timer.js";
+import { startTimer, reset, stopTimer} from "./timer.js";
 import { countWpm } from "./count_wpm.js";
 import { checkAccuracy } from "./accuracy.js";
 
@@ -9,12 +9,13 @@ const resetBtn = document.querySelector("#resetBtn");
 let startingTime = 0;
 
 startBtn.addEventListener("click", () => {
+  reset();
   startingTime = Number(document.querySelector("#duration").value);
   startTimer();
 });
 
 resetBtn.addEventListener("click", () => {
-  resetTimer();
+  reset();
 })
 
 typingInput.addEventListener("input", () => {

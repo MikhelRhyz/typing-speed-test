@@ -3,6 +3,8 @@ import { checkAccuracy } from "./accuracy.js";
 
 let timerId = null;
 const typingInput = document.querySelector("#typingInput");
+const wpm = document.querySelector("#wpm");
+const accuracy = document.querySelector("#accuracy");
 
 export function startTimer() {
   if (timerId) return; // do nothing if timer is already running
@@ -34,7 +36,7 @@ export function startTimer() {
 
 }
 
-export function resetTimer() {
+export function reset() {
   const timeDisplay = document.querySelector("#time");
   const duration = document.querySelector("#duration").value;
   stopTimer();
@@ -43,6 +45,9 @@ export function resetTimer() {
   typingInput.value = "";
   typingInput.disabled = true;
   timeDisplay.textContent = duration + "s"; //return to the starting count
+  wpm.textContent = 0;
+  accuracy.textContent = "--%";
+
 }
 
 export function stopTimer() {
