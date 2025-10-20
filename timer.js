@@ -23,3 +23,10 @@ export function startTimer() {
     duration--; //decrease by 1
   }, 1000);
 }
+
+export function stopTimer() {
+  clearInterval(timerId);
+  timerId = null;
+  time.textContent = "0s"; //ensure stops at zero
+  typingInput.disabled = true;
+}
