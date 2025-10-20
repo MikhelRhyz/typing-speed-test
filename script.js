@@ -2,7 +2,6 @@ import { reset, stopTimer, startTimer } from "./timer.js";
 import { countWpm } from "./count_wpm.js";
 import { checkAccuracy } from "./accuracy.js";
 import { checkDifficulty } from "./difficulty.js";
-import { startGame } from "./startGame.js";
 
 const typingInput = document.querySelector("#typingInput");
 typingInput.disabled = true;
@@ -27,7 +26,8 @@ startBtn.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  reset(isGameOn);
+  isGameOn = false
+  reset();
 });
 
 typingInput.addEventListener("input", () => {
@@ -44,6 +44,7 @@ typingInput.addEventListener("input", () => {
       typingInput.value.trim() === promptContent)
   ) {
     typingInput.value = typingInput.value.trim(); // remove trailing space
+    isGameOn = false;
     stopTimer();
     setTimeout(() => (typingInput.disabled = true), 0);
 
